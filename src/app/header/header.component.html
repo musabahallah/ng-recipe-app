@@ -21,13 +21,14 @@
     <div class="collapse navbar-collapse" id="alignment-example">
       <!-- Links -->
       <ul class="nav navbar-nav">
-        <li><a href="#" (click)="onClick('recipe')" >Recipes</a></li>
-        <li><a href="#" (click)="onClick('shopping-list')">Shopping List</a></li>
+        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/shopping-list">Shopping List</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"appDropdown>
+        <li class="dropdown" appDropdown>
           <a
-            href="#"
             class="dropdown-toggle"
             data-toggle="dropdown"
             role="button"
@@ -36,9 +37,9 @@
             >Mange <span class="caret"></span
           ></a>
           <ul class="dropdown-menu" aria-labelledby="about-us">
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a >Our Story</a></li>
+            <li><a >Our Team</a></li>
+            <li><a >Contact Us</a></li>
           </ul>
         </li>
       </ul>
