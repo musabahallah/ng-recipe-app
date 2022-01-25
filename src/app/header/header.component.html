@@ -37,9 +37,12 @@
             >Mange <span class="caret"></span
           ></a>
           <ul class="dropdown-menu" aria-labelledby="about-us">
-            <li><a >Our Story</a></li>
-            <li><a >Our Team</a></li>
-            <li><a >Contact Us</a></li>
+            <li>
+              <a style="cursor: pointer" (click)="sendData()">Save Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer" (click)="fetchData()">Fetch Data</a>
+            </li>
           </ul>
         </li>
       </ul>
