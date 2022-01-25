@@ -12,20 +12,22 @@ export class RecipesService {
 
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'First Recipe',
-      'About Fajita chicken',
-      'https://www.foodiecrush.com/wp-content/uploads/2020/06/Chicken-Fajitas-foodiecrush.com-008.jpg',
-      [new Ingredient('Meat', 1), new Ingredient('French Fries', 2)]
-    ),
-    new Recipe(
-      'Second Recipe',
-      'About Fajita Meat',
-      'https://www.foodiecrush.com/wp-content/uploads/2020/06/Chicken-Fajitas-foodiecrush.com-008.jpg',
-      [new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
-    ),
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'First Recipe',
+  //     'About Fajita chicken',
+  //     'https://www.foodiecrush.com/wp-content/uploads/2020/06/Chicken-Fajitas-foodiecrush.com-008.jpg',
+  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 2)]
+  //   ),
+  //   new Recipe(
+  //     'Second Recipe',
+  //     'About Fajita Meat',
+  //     'https://www.foodiecrush.com/wp-content/uploads/2020/06/Chicken-Fajitas-foodiecrush.com-008.jpg',
+  //     [new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
+  //   ),
+  // ];
+
+  private recipes: Recipe[] = [];
 
   setRecipes(commingRecipes: Recipe[]) {
     this.recipes = commingRecipes;
