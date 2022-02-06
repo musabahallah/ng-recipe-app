@@ -1,6 +1,16 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form #authForm="ngForm" (ngSubmit)="onSubmitForm(authForm)">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form
+      #authForm="ngForm"
+      (ngSubmit)="onSubmitForm(authForm)"
+      *ngIf="!isLoading"
+    >
       <div class="form-group">
         <label for="email">E-Mail</label>
         <input
@@ -48,9 +58,9 @@
           Switch To {{ isLoginMode ? "Sign Up" : "Login" }}
         </button>
       </div>
+      <div *ngIf="!authForm.valid && authForm.touched">
+        Please Enter Valid Data
+      </div>
     </form>
-    <div *ngIf="!authForm.valid && authForm.touched">
-      Please Enter Valid Data
-    </div>
   </div>
 </div>
