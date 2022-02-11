@@ -17,38 +17,29 @@ export class DataStorageService {
 
   storeRecipes() {
     const recipes = this.recipeService.getReceipes();
-    this.http
-      .put(
-        'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json',
-        recipes
-      )
-      .subscribe((response) => {
-        console.log(response);
-      });
+    return this.http.put(
+      'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json',
+      recipes
+    );
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json',
-          {
-            params: new HttpParams().set('auth', user.token),
-          }
-        );
-      }),
-      map((recpies) => {
-        return recpies.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap((recipes) => {
-        this.recipeService.setRecipes(recipes);
-      })
-    );
+    return this.http
+      .get<Recipe[]>(
+        'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json'
+      )
+      .pipe(
+        map((recpies) => {
+          return recpies.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap((recipes) => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }

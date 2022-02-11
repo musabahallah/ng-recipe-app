@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   sendData() {
-    this.storgeData.storeRecipes();
+    this.storgeData.storeRecipes().subscribe();
   }
 
   fetchData() {
