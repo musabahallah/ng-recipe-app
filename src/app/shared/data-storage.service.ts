@@ -17,29 +17,22 @@ export class DataStorageService {
 
   storeRecipes() {
     const recipes = this.recipeService.getReceipes();
-    return this.http.put(
-      'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json',
-      recipes
-    );
+    return this.http.put('Your API link', recipes);
   }
 
   fetchRecipes() {
-    return this.http
-      .get<Recipe[]>(
-        'https://ng-course-recipe-book-71844-default-rtdb.firebaseio.com/recipes.json'
-      )
-      .pipe(
-        map((recpies) => {
-          return recpies.map((recipe) => {
-            return {
-              ...recipe,
-              ingredients: recipe.ingredients ? recipe.ingredients : [],
-            };
-          });
-        }),
-        tap((recipes) => {
-          this.recipeService.setRecipes(recipes);
-        })
-      );
+    return this.http.get<Recipe[]>('Your API link').pipe(
+      map((recpies) => {
+        return recpies.map((recipe) => {
+          return {
+            ...recipe,
+            ingredients: recipe.ingredients ? recipe.ingredients : [],
+          };
+        });
+      }),
+      tap((recipes) => {
+        this.recipeService.setRecipes(recipes);
+      })
+    );
   }
 }
